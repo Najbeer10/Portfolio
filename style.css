@@ -7,7 +7,7 @@ body{
     font-family: 'Poppins', sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    line-height: 1.6;
+    scroll-behavior: smooth;
 }
 .navbar{
     display: flex;
@@ -15,6 +15,14 @@ body{
     align-items: center;
     background-color: #1e1e2f;
     padding: 15px 50px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    transition: background-color 0,4s ease;
+}
+.navbar.scrolled{
+    background-color: #0f172a;
 }
 .logo{
     color: #fff;
@@ -26,12 +34,25 @@ body{
     display: flex;
     gap: 25px;
 }
+.nav-links a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
 .nav-links a:hover{
     color: #00bcd4;
+}
+.menu-toggle{
+    display: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
 }
 .section{
     padding: 80px 60px;
     text-align: center;
+    margin-top: 70px;
 }
 .section:nth-child(even){
     background-color: #fff;
@@ -42,4 +63,32 @@ body{
 h1, h2{
     margin-bottom: 15px;
     color: #1e1e2f;
+}
+.fade-in{
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+.fade-in.show{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width:768px){
+    .nav-links{
+        display: none;
+        flex-direction: column;
+        background-color: #1e1e2f;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+    .nav-links.show{
+        display: flex;
+    }
+    .menu-toggle{
+        display: block;
+    }
 }
